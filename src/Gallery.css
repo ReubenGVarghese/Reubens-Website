@@ -1,0 +1,123 @@
+/* ---- Gallery ---- */
+.gallery {
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  font-family: "Caudex", serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, #989595 0%, #393e3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 10px rgba(56,75,66,0.2);
+}
+
+/* Pinterest-style layout */
+.photo-grid {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .photo-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .photo-grid {
+    column-count: 1;
+  }
+}
+
+/* Card container MUST be relative */
+.photo-card {
+  position: relative;
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 25px rgba(56,75,66,0.25);
+  border: 2px solid rgba(154, 176, 166, 0.3);
+}
+
+.photo-card:hover {
+  transform: translateY(-10px) rotate(2deg) scale(1.02);
+  box-shadow: 0 15px 40px rgba(56,75,66,0.35);
+  border-color: rgba(154, 176, 166, 0.5);
+}
+
+/* Image wrapper */
+.image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(106,155,134,0.4) 0%, rgba(108, 158, 194, 0.4) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.photo-card:hover .image-wrap::before {
+  opacity: 1;
+}
+
+.image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.5s ease;
+}
+
+/* Centered text ON the image */
+.photo-card h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: "Inter", sans-serif;
+  text-shadow: 0px 4px 15px rgba(56,75,66,0.6);
+  pointer-events: none;
+  z-index: 2;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Blur and scale image on hover */
+.photo-card:hover img {
+  filter: blur(8px) brightness(50%);
+  transform: scale(1.1);
+}
+
+.photo-card:hover h3 {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}

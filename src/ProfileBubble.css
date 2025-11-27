@@ -1,0 +1,116 @@
+/* --- OUTER BUBBLE THAT SCALES WITH CONTENT --- */
+.profile-bubble {
+  width: 95%;
+  max-width: 1100px;
+  background: rgba(154, 176, 166, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 40px;
+  padding: 3rem 2.5rem;
+  margin: 2rem auto;
+
+  box-shadow: 
+    0px 20px 60px rgba(56,75,66,0.25),
+    inset 0 1px 0 rgba(154,176,166,0.3);
+  border: 2px solid rgba(154, 176, 166, 0.3);
+
+  display: block;
+  height: auto;
+  text-align: center;
+  animation: bubbleFloat 1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes bubbleFloat {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.profile-bubble::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(106,155,134,0.15) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- HEADSHOT --- */
+.headshot {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  border: 5px solid rgba(154, 176, 166, 0.6);
+  box-shadow: 
+    0 10px 30px rgba(56,75,66,0.3),
+    0 0 0 10px rgba(154,176,166,0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.headshot:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 
+    0 15px 40px rgba(56,75,66,0.4),
+    0 0 0 15px rgba(154,176,166,0.2);
+}
+
+/* --- NAME + TITLE --- */
+.profile-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: "Caudex", serif;
+  margin: 0;
+  background: linear-gradient(135deg, #989595 0%, #393e3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(56,75,66,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.profile-title {
+  font-size: 1.3rem;
+  font-family: "Tinos", serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 8px rgba(56,75,66,0.3);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- CONTENT INSIDE THE BUBBLE (RESUME) --- */
+.bubble-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.bubble-content * {
+  max-width: 100%;
+}
