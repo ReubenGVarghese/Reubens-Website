@@ -28,10 +28,9 @@ export default function Home() {
 
       {/* ABOUT SECTION */}
       <p className="about-text">
-        I'm a photographer passionate about documenting real stories, authentic
-        moments, and the beauty in everyday life.  
-        Whether I'm traveling across the world or capturing meaningful events 
-        close to home, my goal is to create images that make people feel something.
+        I'm a photographer and computer science maker who loves capturing real stories and building practical 
+        tools that make life easier. Whether I'm creating images that reveal authentic moments or 
+        coding projects that solve everyday problems, my goal is always to make people feel and connect.
       </p>
 
       {/* OPTIONAL BUTTONS */}
