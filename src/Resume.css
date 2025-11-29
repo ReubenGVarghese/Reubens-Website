@@ -143,8 +143,8 @@
 .resume-card p {
   margin: 0.5rem 0;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 3px rgba(56,75,66,0.2);
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(56,75,66,0.4);
   position: relative;
   z-index: 1;
 }
@@ -162,8 +162,8 @@
   padding-left: 1.5rem;
   position: relative;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 3px rgba(56,75,66,0.2);
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(56,75,66,0.4);
 }
 
 .resume-card li::before {
