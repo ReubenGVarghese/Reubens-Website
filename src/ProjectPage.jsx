@@ -34,77 +34,39 @@ export default function ProjectPage() {
 
   // Lock scroll when lightbox is open - prevent scrolling out
   useEffect(() => {
-    const preventScroll = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
-    };
-
     if (lightboxOpen) {
       // Save scroll position
       scrollY.current = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       
-      // Lock body scroll - position fixed approach
+      // Lock body scroll - simpler approach
+      document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY.current}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
       document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      
-      // Lock html element
-      document.documentElement.style.overflow = 'hidden';
-      document.documentElement.style.position = 'fixed';
-      document.documentElement.style.top = `-${scrollY.current}px`;
       
       // Hide navbar
       document.body.classList.add('lightbox-open');
-      
-      // Prevent all scroll events
-      window.addEventListener('wheel', preventScroll, { passive: false });
-      window.addEventListener('touchmove', preventScroll, { passive: false });
-      window.addEventListener('scroll', preventScroll, { passive: false });
-      document.addEventListener('wheel', preventScroll, { passive: false });
-      document.addEventListener('touchmove', preventScroll, { passive: false });
     } else {
       // Show navbar
       document.body.classList.remove('lightbox-open');
       
       // Restore body styles
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
       document.body.style.width = '';
-      document.body.style.overflow = '';
       
-      // Restore html styles
-      document.documentElement.style.overflow = '';
-      document.documentElement.style.position = '';
-      document.documentElement.style.top = '';
-      
-      // Restore scroll position immediately
+      // Restore scroll position
       window.scrollTo(0, scrollY.current);
     }
 
     return () => {
       // Cleanup
       document.body.classList.remove('lightbox-open');
+      document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
       document.body.style.width = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      document.documentElement.style.position = '';
-      document.documentElement.style.top = '';
-      
-      window.removeEventListener('wheel', preventScroll);
-      window.removeEventListener('touchmove', preventScroll);
-      window.removeEventListener('scroll', preventScroll);
-      document.removeEventListener('wheel', preventScroll);
-      document.removeEventListener('touchmove', preventScroll);
     };
   }, [lightboxOpen]);
 

@@ -16,73 +16,89 @@ export default function Home() {
   const [buttonsRef, buttonsVisible] = useScrollAnimation({ threshold: 0.2 });
 
   useEffect(() => {
+    let rafId;
+    
     const handleMouseMove = (e) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        setMousePosition({ x, y });
-
-        // Calculate push effect for title
-        if (titleRef.current) {
-          const titleRect = titleRef.current.getBoundingClientRect();
-          const titleCenterX = titleRect.left + titleRect.width / 2;
-          const titleCenterY = titleRect.top + titleRect.height / 2;
-          
-          const distanceX = e.clientX - titleCenterX;
-          const distanceY = e.clientY - titleCenterY;
-          const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-          
-          // Push effect within 200px
-          if (distance < 200) {
-            const strength = (200 - distance) / 200;
-            setTitleOffset({
-              x: distanceX * strength * 0.1,
-              y: distanceY * strength * 0.1
-            });
-          } else {
-            setTitleOffset({ x: 0, y: 0 });
-          }
-        }
-
-        // Push effect for headshot
-        if (headshotRef.current) {
-          const headshotRect = headshotRef.current.getBoundingClientRect();
-          const headshotCenterX = headshotRect.left + headshotRect.width / 2;
-          const headshotCenterY = headshotRect.top + headshotRect.height / 2;
-          
-          const distanceX = e.clientX - headshotCenterX;
-          const distanceY = e.clientY - headshotCenterY;
-          const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-          
-          if (distance < 250) {
-            const strength = (250 - distance) / 250;
-            headshotRef.current.style.transform = `translate(${distanceX * strength * 0.15}px, ${distanceY * strength * 0.15}px) scale(${1 + strength * 0.05})`;
-          } else {
-            headshotRef.current.style.transform = 'translate(0, 0) scale(1)';
-          }
-        }
+      // Cancel previous animation frame
+      if (rafId) {
+        cancelAnimationFrame(rafId);
       }
+      
+      rafId = requestAnimationFrame(() => {
+        if (containerRef.current) {
+          const rect = containerRef.current.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          setMousePosition({ x, y });
+
+          // Calculate push effect for title
+          if (titleRef.current) {
+            const titleRect = titleRef.current.getBoundingClientRect();
+            const titleCenterX = titleRect.left + titleRect.width / 2;
+            const titleCenterY = titleRect.top + titleRect.height / 2;
+            
+            const distanceX = e.clientX - titleCenterX;
+            const distanceY = e.clientY - titleCenterY;
+            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            // Push effect within 200px
+            if (distance < 200) {
+              const strength = (200 - distance) / 200;
+              setTitleOffset({
+                x: distanceX * strength * 0.1,
+                y: distanceY * strength * 0.1
+              });
+            } else {
+              setTitleOffset({ x: 0, y: 0 });
+            }
+          }
+
+          // Push effect for headshot
+          if (headshotRef.current) {
+            const headshotRect = headshotRef.current.getBoundingClientRect();
+            const headshotCenterX = headshotRect.left + headshotRect.width / 2;
+            const headshotCenterY = headshotRect.top + headshotRect.height / 2;
+            
+            const distanceX = e.clientX - headshotCenterX;
+            const distanceY = e.clientY - headshotCenterY;
+            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            if (distance < 250) {
+              const strength = (250 - distance) / 250;
+              headshotRef.current.style.transform = `translate(${distanceX * strength * 0.15}px, ${distanceY * strength * 0.15}px) scale(${1 + strength * 0.05})`;
+            } else {
+              headshotRef.current.style.transform = 'translate(0, 0) scale(1)';
+            }
+          }
+        }
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, []);
 
   const scrollToContent = () => {
     setContentRevealed(true);
-    // Small delay to ensure state update and DOM render
+    // Larger delay to ensure DOM is fully rendered
     setTimeout(() => {
       if (subtitleRef.current) {
-        subtitleRef.current.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
+        const yOffset = -80; // Offset for navbar
+        const element = subtitleRef.current;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        
+        window.scrollTo({ 
+          top: y, 
+          behavior: 'smooth' 
         });
       }
-    }, 50);
+    }, 100);
   };
 
   return (
@@ -140,12 +156,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SCROLL REVEAL SECTIONS - Hidden until photo is clicked */}
-      {contentRevealed && (
-        <section 
-          className={`reveal-section subtitle-section ${subtitleVisible ? 'visible' : ''}`}
-          ref={subtitleRef}
-        >
+      {/* SCROLL REVEAL SECTIONS */}
+      <section 
+        className={`reveal-section subtitle-section ${contentRevealed ? 'show' : ''} ${subtitleVisible ? 'visible' : ''}`}
+        ref={subtitleRef}
+      >
         <div className="reveal-content">
           <p className="reveal-subtitle">
             <span className="reveal-item">Photographer</span>
@@ -156,14 +171,12 @@ export default function Home() {
           </p>
         </div>
       </section>
-      )}
 
       {/* ABOUT SECTION */}
-      {contentRevealed && (
-        <section 
-          className={`reveal-section about-section ${aboutVisible ? 'visible' : ''}`}
-          ref={aboutRef}
-        >
+      <section 
+        className={`reveal-section about-section ${contentRevealed ? 'show' : ''} ${aboutVisible ? 'visible' : ''}`}
+        ref={aboutRef}
+      >
         <div className="reveal-content">
           <p className="about-text">
             I'm a <span className="highlight-text">photographer</span> and <span className="highlight-text">computer science maker</span> who loves capturing real stories and building practical 
@@ -172,14 +185,12 @@ export default function Home() {
           </p>
         </div>
       </section>
-      )}
 
       {/* BUTTONS SECTION */}
-      {contentRevealed && (
-        <section 
-          className={`reveal-section buttons-section ${buttonsVisible ? 'visible' : ''}`}
-          ref={buttonsRef}
-        >
+      <section 
+        className={`reveal-section buttons-section ${contentRevealed ? 'show' : ''} ${buttonsVisible ? 'visible' : ''}`}
+        ref={buttonsRef}
+      >
         <div className="reveal-content">
           <div className="home-buttons">
             <Link to="/gallery" className="home-btn primary-btn">
@@ -204,7 +215,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      )}
     </div>
   );
 }
