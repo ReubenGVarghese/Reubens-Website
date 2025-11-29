@@ -6,6 +6,7 @@ import './Home.css'
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [titleOffset, setTitleOffset] = useState({ x: 0, y: 0 });
+  const [contentRevealed, setContentRevealed] = useState(false);
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const headshotRef = useRef(null);
@@ -71,6 +72,19 @@ export default function Home() {
     };
   }, []);
 
+  const scrollToContent = () => {
+    setContentRevealed(true);
+    // Small delay to ensure state update and DOM render
+    setTimeout(() => {
+      if (subtitleRef.current) {
+        subtitleRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
+    }, 50);
+  };
+
   return (
     <div 
       ref={containerRef}
@@ -99,7 +113,8 @@ export default function Home() {
         {/* PROFILE PHOTO INTEGRATED INTO INITIAL VIEW */}
         <div 
           ref={headshotRef}
-          className="profile-photo-container integrated"
+          className="profile-photo-container integrated clickable"
+          onClick={scrollToContent}
         >
           <div className="profile-frame">
             <div className="profile-glow"></div>
@@ -125,11 +140,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SCROLL REVEAL SECTIONS */}
-      <section 
-        className={`reveal-section subtitle-section ${subtitleVisible ? 'visible' : ''}`}
-        ref={subtitleRef}
-      >
+      {/* SCROLL REVEAL SECTIONS - Hidden until photo is clicked */}
+      {contentRevealed && (
+        <section 
+          className={`reveal-section subtitle-section ${subtitleVisible ? 'visible' : ''}`}
+          ref={subtitleRef}
+        >
         <div className="reveal-content">
           <p className="reveal-subtitle">
             <span className="reveal-item">Photographer</span>
@@ -140,12 +156,14 @@ export default function Home() {
           </p>
         </div>
       </section>
+      )}
 
       {/* ABOUT SECTION */}
-      <section 
-        className={`reveal-section about-section ${aboutVisible ? 'visible' : ''}`}
-        ref={aboutRef}
-      >
+      {contentRevealed && (
+        <section 
+          className={`reveal-section about-section ${aboutVisible ? 'visible' : ''}`}
+          ref={aboutRef}
+        >
         <div className="reveal-content">
           <p className="about-text">
             I'm a <span className="highlight-text">photographer</span> and <span className="highlight-text">computer science maker</span> who loves capturing real stories and building practical 
@@ -154,12 +172,14 @@ export default function Home() {
           </p>
         </div>
       </section>
+      )}
 
       {/* BUTTONS SECTION */}
-      <section 
-        className={`reveal-section buttons-section ${buttonsVisible ? 'visible' : ''}`}
-        ref={buttonsRef}
-      >
+      {contentRevealed && (
+        <section 
+          className={`reveal-section buttons-section ${buttonsVisible ? 'visible' : ''}`}
+          ref={buttonsRef}
+        >
         <div className="reveal-content">
           <div className="home-buttons">
             <Link to="/gallery" className="home-btn primary-btn">
@@ -184,6 +204,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }
