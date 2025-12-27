@@ -179,7 +179,7 @@ export default function Home() {
       >
         <div className="reveal-content">
           <p className="about-text">
-            I'm a <span className="highlight-text">photographer</span> and <span className="highlight-text">computer science major</span> who loves capturing real stories and building practical 
+            I'm a <span className="highlight-text">photographer</span> and <span className="highlight-text">computer science student</span> who loves capturing real stories and building practical 
             tools that make life easier. Whether I'm creating images that reveal authentic moments or 
             coding projects that solve everyday problems, my goal is always to <span className="highlight-text">make people feel and connect</span>.
           </p>
