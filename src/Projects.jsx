@@ -27,8 +27,6 @@ const projects = [
       "/assets/baptism/photo4.JPG",
       "/assets/baptism/photo5.JPG",
       "/assets/baptism/photo6.JPG",
-      "/assets/baptism/photo7.JPG",
-      "/assets/baptism/photo8.JPG"
     ]
   },
 
