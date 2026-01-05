@@ -120,9 +120,9 @@ export default function Home() {
               transform: `translate(${titleOffset.x}px, ${titleOffset.y}px)`
             }}
           >
-            <span className="title-word" data-word="Hey,">Hey</span>
+            <span className="title-word" data-word="Hey,">Hey,</span>
             <span className="title-word" data-word="I'm">I'm</span>
-            <span className="title-word highlight" data-word="Reuben">Reuben</span>
+            <span className="title-word highlight" data-word="Reuben.">Reuben.</span>
           </h1>
         </div>
 

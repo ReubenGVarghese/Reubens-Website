@@ -213,21 +213,34 @@ function GalleryCard({ project, index }) {
 
 function InteractiveBackgroundPhotos({ mousePosition }) {
   const heroRef = useRef(null);
-  const [photoOffsets, setPhotoOffsets] = useState(Array(7).fill({ x: 0, y: 0, scale: 1 }));
+  const numPhotos = 15;
+  const [photoOffsets, setPhotoOffsets] = useState(Array(numPhotos).fill({ x: 0, y: 0, scale: 1 }));
 
-  // Get 6-7 photos from all projects
+  // Get photos from all projects
   const allPhotos = projects.flatMap(p => p.photos);
-  const selectedPhotos = allPhotos.slice(0, 7);
+  // Cycle through photos if we need more than available
+  const selectedPhotos = [];
+  for (let i = 0; i < numPhotos; i++) {
+    selectedPhotos.push(allPhotos[i % allPhotos.length]);
+  }
   
-  // Fixed positions for photos (not random)
+  // Fixed positions for photos (distributed across the background)
   const photoPositions = [
-    { x: 15, y: 20, rotation: -5 },
-    { x: 75, y: 15, rotation: 8 },
-    { x: 25, y: 60, rotation: -10 },
-    { x: 80, y: 55, rotation: 12 },
-    { x: 10, y: 80, rotation: -7 },
-    { x: 70, y: 75, rotation: 6 },
-    { x: 45, y: 40, rotation: -3 }
+    { x: 10, y: 15, rotation: -8 },
+    { x: 25, y: 10, rotation: 12 },
+    { x: 40, y: 20, rotation: -5 },
+    { x: 60, y: 12, rotation: 10 },
+    { x: 80, y: 18, rotation: -12 },
+    { x: 15, y: 35, rotation: 7 },
+    { x: 35, y: 30, rotation: -10 },
+    { x: 55, y: 40, rotation: 8 },
+    { x: 75, y: 35, rotation: -7 },
+    { x: 90, y: 45, rotation: 15 },
+    { x: 20, y: 60, rotation: -9 },
+    { x: 45, y: 65, rotation: 11 },
+    { x: 65, y: 70, rotation: -6 },
+    { x: 85, y: 75, rotation: 9 },
+    { x: 30, y: 85, rotation: -11 }
   ];
 
   useEffect(() => {

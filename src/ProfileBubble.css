@@ -80,7 +80,7 @@
   font-weight: 700;
   font-family: "Caudex", serif;
   margin: 0;
-  background: linear-gradient(135deg, #989595 0%, #393e3c 100%);
+  background: linear-gradient(135deg, #2d3f29 0%, #628274 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -93,7 +93,7 @@
   font-size: 1.3rem;
   font-family: "Tinos", serif;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(36, 58, 39, 0.9);
   margin-bottom: 2rem;
   text-shadow: 0 2px 8px rgba(56,75,66,0.3);
   letter-spacing: 2px;
