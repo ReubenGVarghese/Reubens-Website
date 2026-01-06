@@ -19,14 +19,14 @@ const projects = [
     id: "jonathans-baptism",
     title: "Sacred Moments",
     subtitle: "Jonathan's Baptism Ceremony",
-    cover: "/assets/sweden/photo1.jpg",
+    cover: "/assets/baptism/photo2.JPG",
     photos: [
-      "/assets/sweden/photo1.jpg",
-      "/assets/sweden/photo2.jpg",
-      "/assets/sweden/photo3.jpg",
-      "/assets/sweden/photo4.jpg",
-      "/assets/sweden/photo5.jpg",
-      "/assets/sweden/photo6.jpg",
+      "/assets/baptism/photo1.JPG",
+      "/assets/baptism/photo2.JPG",
+      "/assets/baptism/photo3.JPG",
+      "/assets/baptism/photo4.JPG",
+      "/assets/baptism/photo5.JPG",
+      "/assets/baptism/photo6.JPG",
     ]
   },
 

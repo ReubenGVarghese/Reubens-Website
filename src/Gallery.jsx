@@ -216,8 +216,10 @@ function InteractiveBackgroundPhotos({ mousePosition }) {
   const numPhotos = 15;
   const [photoOffsets, setPhotoOffsets] = useState(Array(numPhotos).fill({ x: 0, y: 0, scale: 1 }));
 
-  // Get photos from all projects
-  const allPhotos = projects.flatMap(p => p.photos);
+  // Get photos from all projects except baptism
+  const allPhotos = projects
+    .filter(p => p.id !== "jonathans-baptism")
+    .flatMap(p => p.photos);
   // Cycle through photos if we need more than available
   const selectedPhotos = [];
   for (let i = 0; i < numPhotos; i++) {
