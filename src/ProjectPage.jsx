@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import projects from "./Projects.jsx";
 import './ProjectPage.css';
 
@@ -90,6 +90,14 @@ export default function ProjectPage() {
 
   return (
     <div className="project-page">
+  
+      <Link to="/gallery" className="back-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span>Back to Gallery</span>
+      </Link>
+
       <h1>{project.title}</h1>
       <div className="project-grid">
         {project.photos.map((photo, index) => (
@@ -127,7 +135,7 @@ export default function ProjectPage() {
               }}
               aria-label="Close lightbox"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
@@ -141,7 +149,7 @@ export default function ProjectPage() {
               }}
               aria-label="Previous image"
             >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
@@ -166,7 +174,7 @@ export default function ProjectPage() {
               }}
               aria-label="Next image"
             >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>

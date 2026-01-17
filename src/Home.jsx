@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useScrollAnimation } from './hooks/useScrollAnimation'
 import './Home.css'
 
 export default function Home() {
+  const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [titleOffset, setTitleOffset] = useState({ x: 0, y: 0 });
   const [contentRevealed, setContentRevealed] = useState(false);
@@ -101,6 +102,15 @@ export default function Home() {
     }, 100);
   };
 
+  const handleGalleryClick = (e) => {
+    e.preventDefault();
+    navigate('/gallery');
+    // Scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 0);
+  };
+
   return (
     <div 
       ref={containerRef}
@@ -179,8 +189,8 @@ export default function Home() {
       >
         <div className="reveal-content">
           <p className="about-text">
-            I’m a developer in training with a keen eye for detail. As a first-year Computer Science student at Western, I am building a strong foundation in software development and computational thinking.
-            My creative background in photography and film gives me a unique perspective on technical projects.I’m always looking for ways to merge my technical skills with my love for visual media.
+            I'm a developer in training with a keen eye for detail. As a first-year Computer Science student at Western, I am building a strong foundation in software development and computational thinking.
+            My creative background in photography and film gives me a unique perspective on technical projects.I'm always looking for ways to merge my technical skills with my love for visual media.
           </p>
         </div>
       </section>
@@ -192,13 +202,13 @@ export default function Home() {
       >
         <div className="reveal-content">
           <div className="home-buttons">
-            <Link to="/gallery" className="home-btn primary-btn">
+            <a href="/gallery" onClick={handleGalleryClick} className="home-btn primary-btn">
               <span className="btn-bg"></span>
               <span className="btn-content">
                 <span className="btn-text">Explore Portfolio</span>
                 <span className="btn-arrow">→</span>
               </span>
-            </Link>
+            </a>
             <a 
               href="https://github.com/ReubenGVarghese" 
               target="_blank" 
