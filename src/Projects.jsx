@@ -1,7 +1,7 @@
 const projects = [
   {
     id: "sweden-trip",
-    title: "Nordic Dreams",
+    title: "Sweet Sweeden",
     subtitle: "A Journey Through Sweden",
     cover: "/assets/sweden/photo6.jpg",
     photos: [
@@ -17,7 +17,7 @@ const projects = [
 
   {
     id: "jonathans-baptism",
-    title: "Sacred Moments",
+    title: "Baptism Day",
     subtitle: "Jonathan's Baptism Ceremony",
     cover: "/assets/baptism/photo2.JPG",
     photos: [
@@ -32,7 +32,7 @@ const projects = [
 
   {
     id: "norway-trip",
-    title: "Fjords & Northern Lights",
+    title: "No Way! Norway?",
     subtitle: "Exploring Norway's Natural Beauty",
     cover: "/assets/norway/photo2.jpg",
     photos: [
@@ -52,7 +52,7 @@ const projects = [
 
   {
     id: "europe-trip",
-    title: "European Wanderlust",
+    title: "Exploring Europe",
     subtitle: "Cities, Culture & Landscapes",
     cover: "/assets/europe/photo9.jpeg",
     photos: [
