@@ -67,15 +67,6 @@
   background: linear-gradient(135deg, rgba(106,155,134,0.4) 0%, rgba(56,99,129,0.35) 100%);
 }
 
-.resume-download.business {
-  background: linear-gradient(135deg, rgba(108,150,182,0.4) 0%, rgba(56,99,129,0.5) 100%);
-  border-color: rgba(154, 176, 166, 0.5);
-}
-
-.resume-download.business:hover {
-  background: linear-gradient(135deg, rgba(108,150,182,0.6) 0%, rgba(56,99,129,0.7) 100%);
-}
-
 /* Grid Layout */
 .resume-grid {
   display: grid;

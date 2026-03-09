@@ -10,18 +10,11 @@ export default function ResumePage() {
 
         <div className="resume-links">
           <a
-            href="/assets/Reuben Varghese Tech Resume.pdf"
+            href="/assets/Reuben Varghese Resume.pdf"
             download
             className="resume-download"
           >
-            Download Tech Resume (PDF)
-          </a>
-          <a
-            href="/assets/Reuben Varghese Business Resume.pdf"
-            download
-            className="resume-download business"
-          >
-            Download Business Resume (PDF)
+            Download Resume (PDF)
           </a>
         </div>
 
@@ -30,22 +23,26 @@ export default function ResumePage() {
           {/* Education */}
           <div className="resume-card">
             <h2>Education</h2>
-            <p><strong>Western University</strong></p>
-            <p>B.Sc. Computer Science</p>
-            <p><em>Ivey AEO Status</em></p>
+            <p><strong>Western University</strong> — London, ON</p>
+            <p>B.Sc. in Computer Science with Ivey Advanced Entry Opportunity (AEO)</p>
+            <p><em>Sept 2025 – May 2029</em></p>
           </div>
 
           {/* Technical Skills */}
           <div className="resume-card">
             <h2>Technical Skills</h2>
             <div className="skills-grid">
-              <span>Python</span>
-              <span>JavaScript</span>
-              <span>Java</span>
-              <span>React</span>
+              <span>Python (Pandas/NumPy)</span>
+              <span>JavaScript (React)</span>
+              <span>Node</span>
+              <span>C/C++</span>
               <span>HTML/CSS</span>
               <span>SQL</span>
-              <span>C/C++</span>
+              <span>Excel (Pivot Tables, VLOOKUP, Modeling)</span>
+              <span>Tableau</span>
+              <span>Power BI</span>
+              <span>PowerPoint</span>
+              <span>Google Cloud</span>
               <span>Git</span>
               <span>APIs</span>
             </div>
@@ -55,65 +52,39 @@ export default function ResumePage() {
           <div className="resume-card">
             <h2>Business Skills</h2>
             <div className="skills-grid">
-              <span>Leadership</span>
               <span>Project Management</span>
-              <span>Public Speaking</span>
-              <span>Excel</span>
               <span>Strategic Planning</span>
-              <span>Operations</span>
+              <span>Financial Modeling</span>
               <span>Marketing</span>
+              <span>Operations</span>
+              <span>Partnership Development</span>
+              <span>Data-Driven Analytics</span>
             </div>
           </div>
 
-          {/* Technical Experience */}
+          {/* Experience */}
           <div className="resume-card">
-            <h2>Technical Experience</h2>
+            <h2>Experience</h2>
             <ul>
               <li>
-                <strong>Director of Projects – Founders Network</strong>
-                Led workshops, managed 40+ students, organized tech-focused events.
+                <strong>AI/ML Student Research</strong> — University Health Network, Toronto
+                <br /><em>Jan 2026 – Present</em>
+                <br />Developed survival-analysis models using clinical datasets in Python (Pandas, scikit-survival). Implemented Kaplan–Meier estimators, Cox proportional hazards models, and DeepSurv neural networks.
               </li>
               <li>
-                <strong>Tech Coordinator – Marthoma Church</strong>
-                Improved livestream workflow by 60%, implemented new AV system.
+                <strong>Director of Operations</strong> — Gen Connect, Toronto
+                <br /><em>Sept 2023 – Present</em>
+                <br />Founded a registered non-profit connecting youth with elders. Led technical coordination, partnerships, and data-driven marketing that increased attendance and volunteer engagement by 40%.
               </li>
               <li>
-                <strong>Web Developer</strong>
-                Built responsive portfolio website using React, CSS, routing.
-              </li>
-            </ul>
-          </div>
-
-          {/* Business Experience */}
-          <div className="resume-card">
-            <h2>Business & Operations</h2>
-            <ul>
-              <li>
-                <strong>Director of Operations – Gen Connect</strong>
-                Managed a $5K budget, expanded community engagement by 40%.
+                <strong>Director of Projects</strong> — Western Founders Network, London
+                <br /><em>Oct 2025 – Present</em>
+                <br />Led teams in organizing student-led full-stack projects. Hosted technical workshops teaching React, APIs, ML structure, and Git version control.
               </li>
               <li>
-                <strong>Student Council President</strong>
-                Oversaw fundraising, events, club operations, and leadership teams.
-              </li>
-            </ul>
-          </div>
-
-          {/* Leadership */}
-          <div className="resume-card">
-            <h2>Leadership</h2>
-            <ul>
-              <li>
-                <strong>President – Photography Club</strong>
-                Led creative direction and organized member exhibitions.
-              </li>
-              <li>
-                <strong>President – Student Council</strong>
-                Represented student body and coordinated school-wide initiatives.
-              </li>
-              <li>
-                <strong>Director – Founders Network</strong>
-                Managed project teams and facilitated startup workshops.
+                <strong>Small Business Owner (Photography Services)</strong> — Self-Employed, GTA
+                <br /><em>Apr 2022 – July 2025</em>
+                <br />Designed operational systems for scheduling and client tracking. Used analytics and SEO to increase customer acquisition by 70%.
               </li>
             </ul>
           </div>
@@ -123,16 +94,16 @@ export default function ResumePage() {
             <h2>Projects</h2>
             <ul>
               <li>
-                <strong>Portfolio Website</strong>
-                Built with React, responsive layout, dynamic project pages.
+                <strong>WFN Browser</strong> <em>(WIP 2025–2026)</em>
+                <br />TypeScript, JavaScript, HTML, CSS — Custom browser interface inspired by Arc-style vertical tabs and workspaces. Built interactive tab components, event-driven state updates, and workspace management.
               </li>
               <li>
-                <strong>Weather App</strong>
-                Real-time API integration, dynamic UI, local caching.
+                <strong>Commercial Real Estate Financial Modeling</strong> <em>2025</em>
+                <br />Excel, Python (Pandas) — Cash-flow model for income-producing property with cap rate analysis, financing structures, leverage assumptions, and debt service coverage evaluation.
               </li>
               <li>
-                <strong>Photography Portfolio</strong>
-                Created multiple albums documenting travel, events, and portraits.
+                <strong>Survival Modelling Framework — ML Survival Analysis Toolkit</strong> <em>2026</em>
+                <br />Python, Pandas, Scikit-learn, Matplotlib — Modular ML framework for time-to-event prediction using Cox models, Random Survival Forests, and Deep Forest architectures.
               </li>
             </ul>
           </div>
